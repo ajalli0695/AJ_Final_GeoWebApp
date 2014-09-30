@@ -1,4 +1,4 @@
-# from apps.units import models, serializers
+from ListJobs import models, serializers
 from rest_framework import generics
 import django_filters
 
@@ -15,30 +15,30 @@ class MarkerFilter(django_filters.FilterSet):
     id = IntegerListFilter(name='id', lookup_type='in')
 
     class Meta:
-        model = models.Unit
-        fields = ['id', 'name', 'status', 'desc']
+        model = models.Jobs
+        fields = ['company_name', 'job_title', 'description', 'location']
 
 
-class CountyFilter(django_filters.FilterSet):
+class MapItFilter(django_filters.FilterSet):
     id = IntegerListFilter(name='id', lookup_type='in')
 
     class Meta:
-        model = models.County
-        fields = ['id', 'name']
+        model = models.MapIt
+        fields = ['name', 'geom']
 
-class UserCollection(generics.ListAPIView):
+class JobsCollection(generics.ListAPIView):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = models.Unit.objects.all()
-    serializer_class = serializers.UserSerializer
+    queryset = models.Jobs.objects.all()
+    serializer_class = serializers.JobsSerializer
     filter_class = MarkerFilter
 
 
-class CountyCollection(generics.ListAPIView):
+class MapItCollection(generics.ListAPIView):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = models.County.objects.all()
-    serializer_class = serializers.CountySerializer
-    filter_class = CountyFilter
+    queryset = models.MapIt.objects.all()
+    serializer_class = serializers.MapItSerializer
+    filter_class = MapItFilter

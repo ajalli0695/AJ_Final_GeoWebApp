@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-# from apps.units import json_views
+from ListJobs import json_views
 
 urlpatterns = patterns('',
     # Examples:
@@ -7,6 +7,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     #url(r'^admin/', include(admin.site.urls)),
-    url(r'^units', json_views.UserCollection.as_view(), name='units'),
-    url(r'^counties', json_views.CountyCollection.as_view(), name='counties'),
+    url(r'^Jobs', json_views.JobsCollection.as_view(), name='Jobs'),
+    url(r'^MapIt', json_views.MapItCollection.as_view(), name='MapIt'),
     )

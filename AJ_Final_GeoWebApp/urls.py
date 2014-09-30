@@ -1,13 +1,11 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-# from apps. import json_views
+from ListJobs import json_views
 
 
 extra_patterns=patterns('',
 
-    url(r'^', include('apps.world.api_urls'), name='world'),
-    url(r'^', include('apps.units.api_urls'), name='units'),
-
+    url(r'^', include('ListJobs.api_urls'), name='Jobs'),
     )
 
 
