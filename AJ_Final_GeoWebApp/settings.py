@@ -10,7 +10,9 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from generateKey import generate_key
+
+from AJ_Final_GeoWebApp.generateKey import generate_key
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -37,10 +39,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ListJobs',
     'rest_framework',
     'bootstrap',
     'django.contrib.gis',
+    'apps.ListJobs',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -92,7 +94,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
+    os.path.join(BASE_DIR, 'AJ_Final_GeoWebApp/../templates'),
 )
 
 REST_FRAMEWORK = {

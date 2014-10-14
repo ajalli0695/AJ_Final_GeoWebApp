@@ -1,5 +1,7 @@
-from django.conf.urls import patterns, include, url
-from ListJobs import json_views
+from django.conf.urls import patterns, url
+
+from apps.ListJobs import json_views
+
 
 urlpatterns = patterns('',
     # Examples:

@@ -1,7 +1,5 @@
 from django.contrib.gis.db import models
 
-# Create your models here
-
 
 class Jobs(models.Model):
     """class for job listings"""
@@ -15,7 +13,7 @@ class Jobs(models.Model):
 
 
 class MapIt(models.Model):
-    """ Represents a U.S. County """
+    """ class for mapping a particular job """
     name = models.CharField(max_length=60)
     geom = models.MultiPolygonField(srid=4326)
     objects = models.GeoManager()

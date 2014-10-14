@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-# from apps.units import views
+
+from apps.ListJobs import views
+
 
 urlpatterns = patterns('',
     # Examples:

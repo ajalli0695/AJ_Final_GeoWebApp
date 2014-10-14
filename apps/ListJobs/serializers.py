@@ -1,6 +1,8 @@
-from ListJobs import models
 from rest_framework import serializers
+
 from rest_framework_gis import serializers as geoserializers
+
+from apps.ListJobs import models
 
 
 class JobsSerializer(serializers.HyperlinkedModelSerializer):

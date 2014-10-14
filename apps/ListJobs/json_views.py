@@ -1,6 +1,8 @@
-from ListJobs import models, serializers
 from rest_framework import generics
 import django_filters
+
+from apps.ListJobs import serializers
+from apps.ListJobs import models
 
 
 class IntegerListFilter(django_filters.Filter):

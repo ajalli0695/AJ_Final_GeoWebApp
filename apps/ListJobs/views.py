@@ -6,9 +6,10 @@ from django.views import generic
 
 class MainView(generic.TemplateView):
     """Loads the main page"""
-    template_name = 'Jobs/main.html'
+    template_name = 'main.html'
 
 
 class NextView(generic.TemplateView):
     """Loads the main page"""
-    template_name = 'Jobs/next.html'
+    template_name = 'next.html'
+

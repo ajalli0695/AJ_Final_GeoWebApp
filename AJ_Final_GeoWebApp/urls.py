@@ -1,11 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from ListJobs import json_views
 
 
 extra_patterns=patterns('',
 
-    url(r'^', include('ListJobs.api_urls'), name='Jobs'),
+    url(r'^', include('apps.ListJobs.api_urls'), name='Jobs'),
     )
 
 
@@ -17,4 +16,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('apps.ListJobs.urls', namespace='main')),
+
 )
