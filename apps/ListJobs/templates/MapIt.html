@@ -1,0 +1,44 @@
+{%  extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Map It Page{% endblock %}
+{% block morehead %}
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />
+<style>#map {position:absolute; top:52px; right:10px; left:0px; bottom:0; width:100%}</style>
+{%  endblock %}
+
+{% block content %}
+
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <div id="map"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block morescripts %}
+    <script>
+    var map = L.mapbox.map('map', 'ajalli0695.jp2p35h9');
+
+    var county_style = {
+        color: "yellow",
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.75
+    };
+
+{#    $.getJSON("{% url 'MapIt' %}", function (data) {#}
+{#        L.geoJson(data, {style: county_style,#}
+{#                        onEachFeature: function (feature, layer) {#}
+{#                            (function(layer, properties) {#}
+{#                                layer.on("click", function (e) {#}
+{#                                    var popup = L.popup().setLatLng(e.latlng)#}
+{#                                            .setContent('<a href="http://www.google.com">' + properties.name + '</a>')#}
+{#                                            .openOn(map);#}
+{#                                });#}
+{#                            })(layer, feature.properties);#}
+{#        }}).addTo(map);#}
+{#    });#}
+    </script>
+{% endblock %}

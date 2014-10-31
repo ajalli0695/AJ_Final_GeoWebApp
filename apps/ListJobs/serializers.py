@@ -8,12 +8,12 @@ from apps.ListJobs import models
 class JobsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.Jobs
-        fields = ('company_name', 'job_title', 'description', 'location')
+        fields = ('id', 'title', 'location', 'employer', 'url')
 
 
 class MapItSerializer(geoserializers.GeoFeatureModelSerializer):
     class Meta:
         model = models.MapIt
         geo_field = 'geom'
-        fields = ('name', 'geom')
+        fields = ('id', 'name')
 

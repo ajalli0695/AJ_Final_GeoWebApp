@@ -18,7 +18,7 @@ class MarkerFilter(django_filters.FilterSet):
 
     class Meta:
         model = models.Jobs
-        fields = ['company_name', 'job_title', 'description', 'location']
+        fields = ['id', 'title', 'location', 'employer', 'url']
 
 
 class MapItFilter(django_filters.FilterSet):
@@ -26,7 +26,9 @@ class MapItFilter(django_filters.FilterSet):
 
     class Meta:
         model = models.MapIt
-        fields = ['name', 'geom']
+        geo_field = 'geom'
+        fields = ['id', 'name']
+
 
 class JobsCollection(generics.ListAPIView):
     """

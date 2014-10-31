@@ -17,5 +17,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('apps.ListJobs.urls', namespace='main')),
+    (r'^accounts/', include('registration.backends.default.urls')),
 
 )

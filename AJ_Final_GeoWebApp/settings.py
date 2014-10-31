@@ -43,7 +43,13 @@ INSTALLED_APPS = (
     'bootstrap',
     'django.contrib.gis',
     'apps.ListJobs',
+    'registration',
 )
+LOGIN_REDIRECT_URL = 'main'
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: 'main'
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

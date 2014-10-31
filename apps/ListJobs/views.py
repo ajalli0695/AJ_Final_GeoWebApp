@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import generic
 
+from . import models
+
 # Create your views here.
 
 
@@ -9,7 +11,7 @@ class MainView(generic.TemplateView):
     template_name = 'main.html'
 
 
-class NextView(generic.TemplateView):
+class MapItView(generic.TemplateView):
     """Loads the main page"""
-    template_name = 'next.html'
+    template_name = 'MapIt.html'
 
