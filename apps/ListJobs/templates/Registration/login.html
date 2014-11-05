@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div id="login">
+    <form class="form-horizontal" method="post" action="/accounts/login/">{% csrf_token %}
 
-</body>
-</html>
+    <h2 class="text-center header">Please Sign In</h2>
+        <div id="login_input">
+            <input id= type="text" class="form-control span3float" placeholder="Username"  autofocus id="id_username" name="username">
+        </div>
+        <div id="login_input">
+            <input type="password" class="form-control span3float" placeholder="Password" id="id_password" name="password">
+        </div>
+
+    <button id="login_input3" class="btn btn-lg btn-primary btn-block span3" type="submit">Sign in</button>
+
+    <label style="font-size: 8pt" class="checkbox span4">
+    <input type="checkbox" value="remember-me">Remember me</label>
+
+    <a style="font-size: 12pt" href='/accounts/register'>Need An Account?</a>
+    </form>
+</div>
+{% endblock %}
+
+
+
+
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head lang="en">#}
+{#    <meta charset="UTF-8">#}
+{#    <title></title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#</body>#}
+{#</html>#}

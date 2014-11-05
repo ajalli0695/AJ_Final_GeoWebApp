@@ -1,0 +1,46 @@
+.red {
+    color:red;
+}
+
+.form {
+    padding: 100px;
+    float: none;
+}
+
+#login_button {
+    margin-right: 10px;
+}
+
+#login {
+	margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+#login_input  {
+    padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+#search {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#navbar {
+    width:85%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    border-color: blue;
+    border-width: 2px;
+}
+
+#container {
+    width:75%;
+}
+
+#jumbotron {
+    background-color: transparent;
+}

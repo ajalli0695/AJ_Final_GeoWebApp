@@ -45,10 +45,10 @@ INSTALLED_APPS = (
     'apps.ListJobs',
     'registration',
 )
-LOGIN_REDIRECT_URL = 'main'
+LOGIN_REDIRECT_URL = '/main'
 
 ABSOLUTE_URL_OVERRIDES = {
-    'auth.user': lambda u: 'main'
+    'auth.user': lambda u: '/main'
 }
 
 MIDDLEWARE_CLASSES = (

@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-
+from django.contrib.auth.decorators import login_required
 from apps.ListJobs import views
 
 
@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^main$', views.MainView.as_view()),
     url(r'^MapIt$', views.MapItView.as_view()),
     url(r'^$', login_required(views.MainView.as_view())),
+
 )
