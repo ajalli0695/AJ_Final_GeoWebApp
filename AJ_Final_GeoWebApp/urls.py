@@ -18,5 +18,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('apps.ListJobs.urls', namespace='main')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
+    # url(r'^Map/', include('apps.ListJobs.urls', namespace='Map')),
+
 
 )

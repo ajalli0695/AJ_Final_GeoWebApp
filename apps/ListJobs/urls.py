@@ -11,7 +11,10 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^main$', views.MainView.as_view()),
-    url(r'^MapIt$', views.MapItView.as_view()),
+    url(r'^Map$', views.MapView.as_view()),
     url(r'^$', login_required(views.MainView.as_view())),
+    url(r'^add_point/$', 'apps.ListJobs.views.add_point'),
+    url(r'^add_point/error$', 'apps.ListJobs.views.form_error'),
+    url(r'^add_point/success$', 'apps.ListJobs.views.form_success'),
 
 )

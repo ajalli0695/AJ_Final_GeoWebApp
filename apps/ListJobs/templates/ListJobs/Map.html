@@ -3,9 +3,11 @@
 
 {% block title %}Map It Page{% endblock %}
 {% block morehead %}
+
+
 <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />
-<style>#map {position:absolute; top:52px; right:10px; left:0px; bottom:0; width:100%}</style>
+<style>#map {position:absolute; top:52px; right:10px; left:0; bottom:0; width:100%}</style>
 {%  endblock %}
 
 {% block content %}
@@ -19,14 +21,22 @@
 
 {% block morescripts %}
     <script>
+    var ouricon = {
+            radius: 6,
+            fillColor: "#0B0B61",
+            color: "#0A0A2A",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.7
+    };
     var map = L.mapbox.map('map', 'ajalli0695.jp2p35h9');
 
-    var county_style = {
-        color: "yellow",
-        weight: 2,
-        opacity: 1,
-        fillOpacity: 0.75
-    };
+    $.getJSON("{% url 'api:Jobs' %}", function (data) {
+        L.geoJson(data, {style: ouricon}).addTo(map);
+
+    });
+
+
 
 {#    $.getJSON("{% url 'MapIt' %}", function (data) {#}
 {#        L.geoJson(data, {style: county_style,#}

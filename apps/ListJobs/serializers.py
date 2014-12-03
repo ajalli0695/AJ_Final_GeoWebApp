@@ -11,9 +11,9 @@ class JobsSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'title', 'location', 'employer', 'url')
 
 
-class MapItSerializer(geoserializers.GeoFeatureModelSerializer):
+class MapSerializer(geoserializers.GeoFeatureModelSerializer):
     class Meta:
-        model = models.MapIt
+        model = models.Map
         geo_field = 'geom'
         fields = ('id', 'name')
 

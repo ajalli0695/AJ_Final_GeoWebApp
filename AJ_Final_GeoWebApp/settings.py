@@ -44,8 +44,13 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     'apps.ListJobs',
     'registration',
+    'easy_maps',
 )
 LOGIN_REDIRECT_URL = '/main'
+
+
+# EASY_MAPS_CENTER = (-41.3, 32)
+
 
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: '/main'

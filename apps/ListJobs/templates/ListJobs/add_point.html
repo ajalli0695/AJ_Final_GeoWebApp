@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Your Job Listing</title>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+     <!--[if lte IE 8]>
+         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+     <![endif]-->
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  </head>
+
+  <body>
+      <div id="form-div" style="height: 600px; width: 600px;">
+        <br>
+        <p><em>*Must fill out all fields</em></p>
+        <form action="/add_point/" method="post">{% csrf_token %}
+            <div class="fieldWrapper">
+                <p>1) Place the marker where your job listing currently is located</p>
+                <div id="map" style="height:400px; width:80%; padding-top:100px;"></div>
+                <input id="coordinates" name="coordinates" value="" type="hidden" />
+            </div>
+            <div class="fieldWrapper">
+                <label>2) Title of the job</label>
+                {{ form.title }}
+            </div>
+            <div class="fieldWrapper">
+                <label>3) Address of the job:</label>
+                {{ form.address }}
+            </div>
+            <div class="fieldWrapper">
+                <label>4) Name of the employer/company:</label>
+                {{ form.employer }}
+            </div>
+            <br>
+            <input type="submit" name="submit" class="btn" value="Add Job">
+        </form>
+        <br></br>
+    </div>
+
+    <script>
+        var map = L.map('map').setView([34.3044, -83.8339], 10);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        function onMapClick(e) {
+          var lat = e.latlng.lat;
+          var lng = e.latlng.lng;
+          // Every time when user click on map we want to delete previous marker and create new marker on the new position where the user clicked
+          if (typeof marker != 'undefined') {
+              map.removeLayer(marker);  // delete previous marker
+              marker = L.marker([lat, lng]).addTo(map);  // add new marker
+          }
+          else {
+              marker = L.marker([lat, lng]).addTo(map);  // add new marker
+          }
+
+          // we want to pass value of longitude and latitude to input field with id 'coordinates'
+          // note that we set that field as hidden because we don't want user to type the coordinates there. We want him to set marker on map
+          $('#coordinates').val(lng + ',' + lat)
+        }
+        // call the onMapClick function when user click on map
+        map.on('click', onMapClick);
+    </script>
+
+  </body>
+</html>

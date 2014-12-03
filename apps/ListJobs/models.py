@@ -1,5 +1,11 @@
+from __future__ import absolute_import
+# import logging
 from django.contrib.gis.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+# from django.utils.translation import ugettext_lazy as _
+# from django.conf import settings
+# from geopy import geocoders
+# from . import geocode
 
 
 class Jobs(models.Model):
@@ -13,7 +19,7 @@ class Jobs(models.Model):
         return "{}".format(self.title)
 
 
-class MapIt(models.Model):
+class Map(models.Model):
     """ class for mapping a particular job listing and it's employer's location """
     name = models.CharField(max_length=60)
     geom = models.PointField(srid=4326)
@@ -21,6 +27,7 @@ class MapIt(models.Model):
 
     def __str__(self):
         return "{}".format(self.name)
+
 
 
 # class Login(User.models):

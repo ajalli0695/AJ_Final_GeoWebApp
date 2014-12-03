@@ -21,11 +21,11 @@ class MarkerFilter(django_filters.FilterSet):
         fields = ['id', 'title', 'location', 'employer', 'url']
 
 
-class MapItFilter(django_filters.FilterSet):
+class MapFilter(django_filters.FilterSet):
     id = IntegerListFilter(name='id', lookup_type='in')
 
     class Meta:
-        model = models.MapIt
+        model = models.Map
         geo_field = 'geom'
         fields = ['id', 'name']
 
@@ -39,10 +39,10 @@ class JobsCollection(generics.ListAPIView):
     filter_class = MarkerFilter
 
 
-class MapItCollection(generics.ListAPIView):
+class MapCollection(generics.ListAPIView):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = models.MapIt.objects.all()
-    serializer_class = serializers.MapItSerializer
-    filter_class = MapItFilter
+    queryset = models.Map.objects.all()
+    serializer_class = serializers.MapSerializer
+    filter_class = MapFilter
