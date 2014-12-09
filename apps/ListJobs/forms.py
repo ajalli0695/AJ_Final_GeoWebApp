@@ -1,20 +1,10 @@
-from django import forms
-from models import *
+from django.contrib.gis import forms
+from . import models
 
 
-class AddJobForm(forms.Form):
+class AddJobForm(forms.ModelForm):
 
-    coordinates = forms.CharField(max_length=200, required=True)
-    title = forms.CharField(max_length=40, required=True)
-    address = forms.CharField(max_length=200, required=True)
-    employer = forms.CharField(max_length=200, required=True)
+    class Meta:
+        model = models.Jobs
+        fields = ['title', 'location', 'employer', 'url', 'geom']
 
-    def clean(self):
-        cleaned_data = self.cleaned_data
-
-        coordinates = cleaned_data.get("coordinates")
-        title = cleaned_data.get("title")
-        address = cleaned_data.get("location")
-        employer = cleaned_data.get("employer")
-
-        return cleaned_data

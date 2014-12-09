@@ -14,6 +14,8 @@ class Jobs(models.Model):
     location = models.CharField(max_length=50)
     employer = models.CharField(max_length=50)
     url = models.URLField(max_length=200)
+    geom = models.PointField(srid=4326)
+    objects = models.GeoManager()
 
     def __str__(self):
         return "{}".format(self.title)

@@ -24,24 +24,33 @@
             <div class="fieldWrapper">
                 <p>1) Place the marker where your job listing currently is located</p>
                 <div id="map" style="height:400px; width:80%; padding-top:100px;"></div>
-                <input id="coordinates" name="coordinates" value="" type="hidden" />
+                <input id="geom" name="geom" value="" type="hidden" />
             </div>
             <div class="fieldWrapper">
+                {{ form.title.errors }}
                 <label>2) Title of the job</label>
                 {{ form.title }}
             </div>
             <div class="fieldWrapper">
-                <label>3) Address of the job:</label>
-                {{ form.address }}
+                {{ form.location.errors }}
+                <label>3) location of the job (city):</label>
+                {{ form.location }}
             </div>
             <div class="fieldWrapper">
+                {{ form.employer.errors }}
                 <label>4) Name of the employer/company:</label>
                 {{ form.employer }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.url.errors }}
+                <label>4) url of the employer/company:</label>
+                {{ form.url }}
+                {{ form.geom.errors }}
             </div>
             <br>
             <input type="submit" name="submit" class="btn" value="Add Job">
         </form>
-        <br></br>
+        <br>
     </div>
 
     <script>
@@ -64,7 +73,7 @@
 
           // we want to pass value of longitude and latitude to input field with id 'coordinates'
           // note that we set that field as hidden because we don't want user to type the coordinates there. We want him to set marker on map
-          $('#coordinates').val(lng + ',' + lat)
+          $('#geom').val("POINT(" + lng + ' ' + lat + ")")
         }
         // call the onMapClick function when user click on map
         map.on('click', onMapClick);
