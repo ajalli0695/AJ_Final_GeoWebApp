@@ -28,32 +28,32 @@ class AddJobView(generic.CreateView):
     success_url = '/add_point/success'
 
 
-# def add_point(request):
-#
-#     if request.method == 'POST':
-#         form = AddJobForm(request.POST)
-#         if form.is_valid():
-#             new_point = Jobs()
-#             cd = form.cleaned_data
-#             coordinates = cd['coordinates'].split(',')
-#             new_point.geom = Point(float(coordinates[0]), float(coordinates[1]))
-#             new_point.title = cd['title']
-#             new_point.location = cd['location']
-#             new_point.employer = cd['employer']
-#             new_point.url = cd['url']
-#             new_point.save()
-#             return HttpResponseRedirect('/add_point/success')
-#
-#         else:
-#             return HttpResponseRedirect('/add_point/error')
-#     else:
-#         form = AddJobForm()
-#
-#     args = {}
-#     args.update(csrf(request))
-#     args['form'] = AddJobForm()
-#
-#     return render_to_response('ListJobs/add_point.html', args)
+def add_point(request):
+
+    if request.method == 'POST':
+        form = AddJobForm(request.POST)
+        if form.is_valid():
+            new_point = Jobs()
+            cd = form.cleaned_data
+            coordinates = cd['coordinates'].split(',')
+            new_point.geom = Point(float(coordinates[0]), float(coordinates[1]))
+            new_point.title = cd['title']
+            new_point.location = cd['location']
+            new_point.employer = cd['employer']
+            new_point.url = cd['url']
+            new_point.save()
+            return HttpResponseRedirect('/add_point/success')
+
+        else:
+            return HttpResponseRedirect('/add_point/error')
+    else:
+        form = AddJobForm()
+
+    args = {}
+    args.update(csrf(request))
+    args['form'] = AddJobForm()
+
+    return render_to_response('ListJobs/add_point.html', args)
 
 
 def form_error(request):

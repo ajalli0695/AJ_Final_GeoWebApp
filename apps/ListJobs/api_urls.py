@@ -10,5 +10,5 @@ urlpatterns = patterns('',
 
     #url(r'^admin/', include(admin.site.urls)),
     url(r'^Jobs', json_views.JobsCollection.as_view(), name='Jobs'),
-    url(r'^Map', json_views.MapCollection.as_view(), name='Map'),
+    #url(r'^Map', json_views.MapCollection.as_view(), name='Map'),
     )
