@@ -5,9 +5,10 @@ from rest_framework_gis import serializers as geoserializers
 from apps.ListJobs import models
 
 
-class JobsSerializer(serializers.HyperlinkedModelSerializer):
+class JobsSerializer(geoserializers.GeoFeatureModelSerializer):
     class Meta:
         model = models.Jobs
+        geo_field = 'geom'
         fields = ('id', 'title', 'location', 'employer', 'url')
 
 

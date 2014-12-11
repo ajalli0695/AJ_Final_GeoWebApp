@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^add_point/$', views.AddJobView.as_view(), name='add_job'),
     url(r'^add_point/error$', 'apps.ListJobs.views.form_error'),
     url(r'^add_point/success$', 'apps.ListJobs.views.form_success'),
+    url(r'^sources$', views.SourcesView.as_view()),
 )

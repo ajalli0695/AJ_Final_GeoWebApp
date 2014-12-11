@@ -10,6 +10,11 @@ from . import forms
 
 # Create your views here.
 
+class SourcesView(generic.TemplateView):
+    """Loads the sources page"""
+    model = models.Jobs
+    template_name = 'ListJobs/sources.html'
+
 
 class MainView(generic.TemplateView):
     """Loads the main page"""
@@ -62,3 +67,4 @@ def form_error(request):
 
 def form_success(request):
     return render_to_response('ListJobs/form_success.html')
+

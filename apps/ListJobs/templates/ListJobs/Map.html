@@ -31,10 +31,31 @@
     };
     var map = L.mapbox.map('map', 'ajalli0695.jp2p35h9');
 
-    $.getJSON("{% url 'api:Jobs' %}", function (data) {
-        L.geoJson(data, {style: ouricon}).addTo(map);
+    $.getJSON('{% url 'api:Jobs' %}', function (data) {
+      L.geoJson(data, {pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, ouricon);
+        },
+            onEachFeature: function (feature, layer) {
+                (function(layer, properties) {
+
+
+                    layer.on("click", function (e) {
+
+                        var popup = L.popup().setLatLng(e.latlng)
+
+                                .setContent('<a href="http://127.0.0.1:8000/sources">' + properties.url + '</a>')
+
+                                .openOn(map);
+                    });
+
+                })(layer, feature.properties);
+                         },
+    style: ouricon}).addTo(map);
+
 
     });
+
+
 
 
 
